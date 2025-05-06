@@ -1,0 +1,8 @@
+x-to-kafka-service:
+  x-keywords:
+    - Java
+    - Microservices
+    - Spring
+    - Kafka
+    - Elasticsearch
+  welcome-message: "Welcome to the x-to-kafka-service!"
