@@ -13,4 +13,7 @@ public class XToKafkaServiceConfigData {
 
     private List<String> xKeywords;
     private String welcomeMessage;
+    private String xV2BaseUrl;
+    private String xV2RulesBaseUrl;
+    private String xV2BearerToken;
 }
