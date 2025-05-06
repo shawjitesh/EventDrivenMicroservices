@@ -1,6 +1,7 @@
 package com.microservices.poc.x.to.kafka.service;
 
 import com.microservices.poc.x.to.kafka.service.config.XToKafkaServiceConfigData;
+import com.microservices.poc.x.to.kafka.service.runner.StreamRunner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -13,11 +14,12 @@ import java.util.Arrays;
 public class XToKafkaServiceApplication  implements CommandLineRunner {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(XToKafkaServiceApplication.class);
-
     private final XToKafkaServiceConfigData xToKafkaServiceConfigData;
+    private final StreamRunner streamRunner;
 
-    public XToKafkaServiceApplication(XToKafkaServiceConfigData xToKafkaServiceConfigData) {
+    public XToKafkaServiceApplication(XToKafkaServiceConfigData xToKafkaServiceConfigData, StreamRunner streamRunner) {
         this.xToKafkaServiceConfigData = xToKafkaServiceConfigData;
+        this.streamRunner = streamRunner;
     }
 
     public static void main(String[] args) {
@@ -29,5 +31,6 @@ public class XToKafkaServiceApplication  implements CommandLineRunner {
         LOGGER.info("Application starts...");
         LOGGER.info(Arrays.toString(xToKafkaServiceConfigData.getXKeywords().toArray(new String[] {})));
         LOGGER.info("Welcome message: {}", xToKafkaServiceConfigData.getWelcomeMessage());
+        streamRunner.start();
     }
 }
