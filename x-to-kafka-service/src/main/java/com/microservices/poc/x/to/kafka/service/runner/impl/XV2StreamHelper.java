@@ -65,6 +65,9 @@ public class XV2StreamHelper {
         for (String line : lines) {
             if (!line.isEmpty()) {
                 String tweet = getFormattedTweet(line);
+                if (tweet == null) {
+                    continue; // Skip invalid tweets
+                }
                 Status status = null;
                 try {
                     status = TwitterObjectFactory.createStatus(tweet);
@@ -164,16 +167,26 @@ public class XV2StreamHelper {
     }
 
     private String getFormattedTweet(String data) {
-        JSONObject jsonData = new JSONObject(data).getJSONObject("data");
+        try {
+            JSONObject jsonObject = new JSONObject(data);
+            if (!jsonObject.has("data")) {
+                LOGGER.error("Invalid JSON: Missing 'data' field. JSON: {}", data);
+                return null;
+            }
 
-        String[] params = {
-                ZonedDateTime.parse(jsonData.getString("created_at"))
-                        .format(DateTimeFormatter.ofPattern(X_STATUS_DATE_FORMAT, Locale.ENGLISH)),
-                jsonData.getString("id"),
-                jsonData.getString("text").replaceAll("\"", "\\\\\""),
-                jsonData.getString("author_id")
-        };
-        return formatTweetAsJsonWithParams(params);
+            JSONObject jsonData = jsonObject.getJSONObject("data");
+            String[] params = {
+                    ZonedDateTime.parse(jsonData.getString("created_at"))
+                            .format(DateTimeFormatter.ofPattern(X_STATUS_DATE_FORMAT, Locale.ENGLISH)),
+                    jsonData.getString("id"),
+                    jsonData.getString("text").replaceAll("\"", "\\\\\""),
+                    jsonData.getString("author_id")
+            };
+            return formatTweetAsJsonWithParams(params);
+        } catch (JSONException e) {
+            LOGGER.error("Error parsing JSON: {}", data, e);
+            return null;
+        }
     }
 
     private String formatTweetAsJsonWithParams(String[] params) {
