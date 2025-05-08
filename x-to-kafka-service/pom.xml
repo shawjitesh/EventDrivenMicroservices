@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.microservices.poc</groupId>
         <artifactId>event-driven-microservices</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>1.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>x-to-kafka-service</artifactId>
