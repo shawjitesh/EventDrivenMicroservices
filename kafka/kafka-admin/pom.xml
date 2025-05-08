@@ -7,6 +7,7 @@
         <groupId>com.microservices.poc</groupId>
         <artifactId>event-driven-microservices</artifactId>
         <version>1.0-SNAPSHOT</version>
+        <relativePath>../../pom.xml</relativePath>
     </parent>
 
     <artifactId>kafka-admin</artifactId>
