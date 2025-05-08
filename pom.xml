@@ -28,6 +28,7 @@
 		<lombok.version>1.18.30</lombok.version>
 		<httpclient5.version>5.4.4</httpclient5.version>
 		<json.version>20250107</json.version>
+		<avro.version>1.12.0</avro.version>
 	</properties>
 
 	<dependencyManagement>
@@ -68,6 +69,11 @@
 				<groupId>com.microservices.poc</groupId>
 				<artifactId>app-config-data</artifactId>
 				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.avro</groupId>
+				<artifactId>avro</artifactId>
+				<version>${avro.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
