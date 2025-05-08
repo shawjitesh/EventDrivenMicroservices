@@ -1,4 +1,4 @@
-package com.microservices.poc.x.to.kafka.service.config;
+package com.microservices.poc.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

@@ -1,6 +1,6 @@
 package com.microservices.poc.x.to.kafka.service.runner.impl;
 
-import com.microservices.poc.x.to.kafka.service.config.XToKafkaServiceConfigData;
+import com.microservices.poc.config.XToKafkaServiceConfigData;
 import com.microservices.poc.x.to.kafka.service.listener.XKafkaStatusListener;
 import com.microservices.poc.x.to.kafka.service.runner.StreamRunner;
 import jakarta.annotation.PreDestroy;

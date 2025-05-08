@@ -1,6 +1,6 @@
 package com.microservices.poc.x.to.kafka.service.runner.impl;
 
-import com.microservices.poc.x.to.kafka.service.config.XToKafkaServiceConfigData;
+import com.microservices.poc.config.XToKafkaServiceConfigData;
 import com.microservices.poc.x.to.kafka.service.exception.XToKafkaServiceException;
 import com.microservices.poc.x.to.kafka.service.listener.XKafkaStatusListener;
 import com.microservices.poc.x.to.kafka.service.runner.StreamRunner;
@@ -53,7 +53,7 @@ public class MockKafkaStreamRunner implements StreamRunner {
     }
 
     @Override
-    public void start() throws TwitterException {
+    public void start() {
         String[] keywords = xToKafkaServiceConfigData.getXKeywords().toArray(new String[0]);
         int minTweetLength = xToKafkaServiceConfigData.getMockMinTweetLength();
         int maxTweetLength = xToKafkaServiceConfigData.getMockMaxTweetLength();
