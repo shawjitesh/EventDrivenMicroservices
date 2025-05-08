@@ -10,15 +10,5 @@
     </parent>
 
     <artifactId>kafka</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>kafka-admin</module>
-        <module>kafka-model</module>
-        <module>kafka-producer</module>
-    </modules>
-
-    <properties>
-
-    </properties>
 
 </project>
